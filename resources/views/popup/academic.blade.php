@@ -2,13 +2,38 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <h5 class="modal-title" id="exampleModalLabel" style="color: black;"> Exam Performance </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form style="color: black;">
+                    <div class="col-md-6 fa-pull-left">
+                        <label for="recipient-name" class=""> Exam Type</label>
+                        <input type="text" class="form-control fa-pull-left" id="recipient-name">
+
+                        <label for="recipient-name" class=""> Exam Type</label>
+                        <input type="text" class="form-control fa-pull-left" id="recipient-name">
+                    </div>
+                    <div class="col-md-8">
+                        add
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class=""> Exam Type</label>
+                        <input type="text" class="form-control fa-pull-left" id="recipient-name">
+
+                        <label for="recipient-name" class=""> E</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Recipient:</label>
                         <input type="text" class="form-control" id="recipient-name">
