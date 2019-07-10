@@ -63,7 +63,7 @@ class CoursesController extends Controller
         //echo $enrolls;
 
 
-        return view('Courses.create');
+        return view('courses.create');
     }
 
     /**
@@ -136,7 +136,7 @@ class CoursesController extends Controller
 
         //$courses = DB::select('SELECT * FROM wholeCourses');
 
-        return view('Courses.schedule2')->with('courses',$courses);
+        return view('courses.schedule2')->with('courses',$courses);
 
     }
 
