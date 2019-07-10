@@ -56,3 +56,6 @@ Route::resource('courses','CoursesController');
 Route::resource('profile','ProfileController');
 
 Route::resource('enrollCourse','EnrollController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
