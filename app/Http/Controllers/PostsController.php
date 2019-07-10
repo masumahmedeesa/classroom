@@ -113,11 +113,14 @@ class PostsController extends Controller
         //echo $post;
         //Check the accurate user
 
-        if(auth()->user()->id !== $post->user_id){
+        if(auth()->user()->id !== $post->user_id AND auth()->user()->id !== 3){
             return redirect('/posts')-> with('error','Unauthorized Page');
+
+
         }
 
         return view('posts.edit')->with('post',$post);
+
     }
 
     /**
@@ -170,7 +173,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        if(auth()->user()->id !== $post->user_id){
+        if(auth()->user()->id !== $post->user_id AND auth()->user()->id !== 3){
             return redirect('/posts')-> with('error','Unauthorized Page');
         }
 
