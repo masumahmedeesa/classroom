@@ -22,7 +22,7 @@
 Route::get('/', 'virtualController@index');
 Route::get('/first', 'virtualController@loggin');
 Route::get('/front2', 'virtualController@front2');
-Route::get('/classhome', 'virtualController@classhome');
+Route::get('/home', 'HomeController@classhome');
 //Route::get('/manageCourse', 'CourseController@getManageCourse');
 
 //Route::get('/manage/course', ['as' => 'manageCourse','uses'=>'CourseController@getManageCourse']);

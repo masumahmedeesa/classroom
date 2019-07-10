@@ -15,16 +15,6 @@
 		<img src="images/XOSS.jpg" width="100%" height="70%" alter="Nothing"/>
 
 		<br> <br>
-
-    <!-- @if(count($services)>0)
-    	<ul class="list-group" style="background: black;">
-		@foreach($services as $service)
-			<li class="list-group-item" style="color: red;">
-				{{$service}}
-			</li>	
-		@endforeach
-		</ul>
-    @endif -->
 	
 
 @endsection

@@ -42,23 +42,19 @@
                             <td> {{$course->credit}} </td>
                             <td> {!! $course->timeSpan !!} </td>
                             <td>
-{{--                                if(count($course->--}}
+
                                 {{ Form::open(['action' => ['EnrollController@show',$course->cid], 'method' => 'GET','enctype'=>'multipart/form-data']) }}
                                 {{Form::submit('TotalEnrolls',['class'=>'btn btn-secondary btn-sm'])}}
                                 {{ Form::close() }}
-{{--                                <a href="{{route('enrollCourse.index')}}" class="btn btn-secondary btn-sm">TotalEnrolls </a> </td>--}}
+
 
 
                             <td>
-{{--                                @foreach($enrolls as $enrolled)--}}
-{{--                                    @if($enrolled->sessionYear !== $course->sessionYear AND $enrolled->courseCode !== $course->courseCode)--}}
+
                             {{ Form::open(['action' => ['CoursesController@enrollment',$course->cid], 'method' => 'POST','enctype'=>'multipart/form-data']) }}
                             {{Form::submit('Enroll',['class'=>'btn btn-danger btn-sm'])}}
                             {{ Form::close() }}
 
-{{--                                    <button class="btn btn-danger" name="Enroll" style="pointer-events: none" disabled> Enroll </button>--}}
-{{--                                @endif--}}
-{{--                                @endforeach--}}
 
                             </td>
 
@@ -72,11 +68,7 @@
                                 {{Form::submit('Delete',['class' => 'btn btn-outline-success btn-sm'])}}
                                 {{ Form::close() }}
                                     </td>
-{{--                                {{Form::open(['action' => ['CourseController@destroy',$course->courseCode], 'method' => 'POST', 'class' => 'btn fa-pull-right']) }}--}}
-{{--                                {{Form::hidden('_method','DELETE')}}--}}
-{{--                                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}--}}
 
-{{--                                {{ Form::close() }}--}}
                             @endif
                         </tr>
                     @endforeach
@@ -93,64 +85,4 @@
     </div>
 
 
-    {{--<br>--}}
-
-    {{--            <table class="table table-striped" style="color: white;">--}}
-    {{--                <tr>--}}
-    {{--                    <th> Session Year </th>--}}
-    {{--                    <th>Course Name </th>--}}
-    {{--                    <th> Course Code </th>--}}
-    {{--                    <th> Teacher Name </th>--}}
-    {{--                    <th> Credit </th>--}}
-    {{--                    <th> Day</th>--}}
-    {{--                    <th> Time Span</th>--}}
-
-    {{--                </tr>--}}
-
-
-    {{--                    <tr>--}}
-    {{--                        <td>--}}
-
-    {{--                        </td>--}}
-    {{--                        <td>--}}
-    {{--                            Database Management System--}}
-    {{--                        </td>--}}
-    {{--                        <td>--}}
-    {{--                            CSE346--}}
-    {{--                        </td>--}}
-    {{--                        <td>--}}
-    {{--                            Md Masum--}}
-    {{--                        </td>--}}
-    {{--                        <td>--}}
-    {{--                            Saturday--}}
-    {{--                        </td>--}}
-    {{--                        <td>--}}
-    {{--                            2AM - 3 AM--}}
-    {{--                        </td>--}}
-    {{--                    </tr>--}}
-
-
-    {{--            </table>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-
-
 @endsection
-
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--}}
-
-{{--<script type="text/javascript">--}}
-{{--    function change( el )--}}
-{{--    {--}}
-{{--        if ( el.value === "Enroll" ){--}}
-{{--            el.value = "Enrolled!";--}}
-{{--            el.load();--}}
-{{--            el.attr('disabled','true');--}}
-
-{{--            //$('button').attr('disabled',false);--}}
-{{--        }--}}
-
-{{--        // else--}}
-{{--        //     el.value = "Open Curtain";--}}
-{{--    }--}}
-{{--</script>--}}
