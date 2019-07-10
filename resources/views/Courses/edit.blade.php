@@ -207,43 +207,7 @@
     {{--                        </td>--}}
 
 
-    {{--                    </tr>--}}
-    {{--                    <tr>--}}
-    {{--                        <td></td>--}}
-    {{--                        <td></td>--}}
-    {{--                        <td></td>--}}
-    {{--                        <td></td>--}}
-    {{--                        <td></td>--}}
-    {{--                    </tr>--}}
-    {{--                </table>--}}
-    {{--                <div class="panel-footer">--}}
-    {{--                    <span style="padding-right: 11px;"> </span>--}}
-    {{--                    <button type="submit" class="btn btn-outline-primary"> Create </button>--}}
-    {{--                </div>--}}
-    {{--            </form>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
 
-    {{--<div class="row">--}}
-    {{--    <form class="form-control"  method="POST" action="{{route('postIntoCourses')}}">--}}
-    {{--        {{ csrf_field() }}--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="sessionYear" id="sessionYear"> A--}}
-    {{--        <br>--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="courseName" id="courseName"> N--}}
-    {{--        <br>--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="courseCode" id="courseCode"> C--}}
-    {{--        <br>--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="teacherName" id="teacherName"> C--}}
-    {{--        <br>--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="credit" id="credit"> Credit--}}
-    {{--        <br>--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="day" id="day"> day--}}
-    {{--        <br>--}}
-    {{--        <input type="text" placeholder="Ex : 2AM to 4AM" class="form-control" name="timeSpan" id="timeSpan"> timeSpan--}}
-    {{--        <br>--}}
-    {{--        <input type="submit" class="btn btn-outline-success"> Sub--}}
-    {{--    </form>--}}
-    {{--</div>--}}
 
 
 @endsection
