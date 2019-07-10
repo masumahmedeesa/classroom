@@ -59,6 +59,4 @@
 
     </div>
 
-<a href="/enrollCourse/create" class="btn btn-danger">Create</a>
-
 @endsection

@@ -19,14 +19,7 @@ class virtualController extends Controller
 		
 		return view('classroom.index');
     }
-    public function loggin()
-    {
-    	$title="Login Page";
-    	//return view('classroom.first',compact('title'));
-		return view('classroom.first')->with('title',$title);
-		
-		//return view('classroom.login');
-    }
+
     public function classhome()
     {
     	$data=array(
