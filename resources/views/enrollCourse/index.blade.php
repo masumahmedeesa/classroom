@@ -16,8 +16,12 @@
                     @if(Auth::user()->id == 3)
                         <a href="/enrollCourse/{{$enrolled[0]->cid}}/edit" class="btn btn-danger btn-sm"> Create Performance </a>
                         <span style="padding-right: 10px;"> </span>
-                        <a href="#" class="btn btn-secondary btn-sm"> Take Attendance </a>
+                        <a href="/performDatabase/{{$enrolled[0]->cid}}/edit" class="btn btn-secondary btn-sm"> Take Attendance </a>
                         @endif
+                        <span style="padding-right: 10px;"> </span>
+
+                        <a href="/performDatabase/{{$enrolled[0]->cid}}" class="btn btn-outline-info btn-sm"> Show Database </a>
+
                 </div>
                 <div class="card-body">
 

@@ -16,11 +16,7 @@ class CoursesController extends Controller
     {
         $this->middleware('auth',['except' => ['index','show']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
 
@@ -33,45 +29,18 @@ class CoursesController extends Controller
             ->get();
 
         //echo $enrolls;
-        $courses = Courses::orderBy('created_at','desc')->paginate(8);
+        $courses = Courses::orderBy('sessionYear','desc')->paginate(8);
         return view('courses.index')->with('courses',$courses)->with('enrolls',$enrolls);
         //return view('Courses.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-
-        //$currentUser = auth()->user()->id;
-        //echo $currentUser;
-        //$profiles = Profile::find($currentUser);
-//        $prof = DB::table('infos')
-//            ->Where('user_id',$currentUser)
-//            ->get();
-
-        //$prof = Profile::all();
-
-//        foreach ($prof as $profiles){
-//            echo $profiles->registration_no;
-//        }
-
-        //$enrolls = Enrollment::all();
-        //echo $enrolls;
-
 
         return view('courses.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -100,12 +69,7 @@ class CoursesController extends Controller
         return redirect('/courses')->with('success','Course Created!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($cid)
     {
         //$course = Courses::find($courseCode);

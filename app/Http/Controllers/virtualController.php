@@ -35,6 +35,11 @@ class virtualController extends Controller
 		return view('classroom.front2');
 	}
 
+    public function first()
+    {
+        return view('classroom.first');
+    }
+
     public function manageCourse()
     {
         return view('classroom.manageCourse');

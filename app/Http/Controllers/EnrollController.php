@@ -7,210 +7,127 @@ use App\Enrollment;
 use App\Performed;
 use App\Profile;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Input;
 
 class EnrollController extends Controller
 {
-    private $dataBoss;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-//        $currentUser = auth()->user()->id;
-//        echo $currentUser;
-//        //$profiles = Profile::find($currentUser);
-//        $prof = DB::table('infos')
-//            ->Where('user_id',$currentUser)
-//            ->get();
-//
-//        //$prof = Profile::all();
-//
-//        foreach ($prof as $profiles){
-//            $important = $profiles->registration_no;
-//        }
-//        //echo $important;
-////        $enrolled = DB::table('enrolls')
-////            ->Where('registration_no',$important)
-////            ->get();
-//
-//        $enrolled = DB ::table('enrolls')
-//            ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
-//            ->select('courseName','courseCode','sessionYear','registration_no')
-//            ->paginate(25);
-//
-////        foreach ($enrolled as $enroll){
-////
-////        }
-//        echo $enrolled;
-//
-//        return view('enrollCourse.index')->with('enrolled',$enrolled);
 
-        $cid = $this->dataBoss;
-        echo $cid;
-        echo "eesha\n";
+        //echo $cid;
+        //echo "eesha\n";
         return view('enrollCourse.create');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function performed(Request $request,$cid)
     {
-        $this->validate($request,[
-            'examType' => 'required',
-            'obtainedMarks' =>'required'
-        ]);
-
-
-
-
-        echo $cid;
         $courses = DB :: table('wholeCourses')
             ->select('sessionYear','courseCode')
             ->Where('cid',$cid)
             ->get();
 
-        foreach ($courses as $cour){
-            $year = $cour->sessionYear;
-            $code = $cour->courseCode;
-        }
-
-//        $enrolled = DB ::table('enrolls')
-//            ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
-//            ->distinct()->select('wholeCourses.courseName','wholeCourses.courseCode','wholeCourses.sessionYear','wholeCourses.teacherName','enrolls.registration_no')
-//            ->Where('sessionYear',$year)
-//            ->Where('courseCode',$code)
-//            ->get();
+//        foreach ($courses as $cour){
+//            $year = $cour->sessionYear;
+//            $code = $cour->courseCode;
+//        }
+        $yr = $courses[0]->sessionYear;
+        $code = $courses[0]->courseCode;
 
         $enrolled = DB ::table('enrolls')
             ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
             ->distinct()
-            ->selectRaw('enrolls.registration_no, wholeCourses.cid')
-            ->Where('wholeCourses.sessionYear',$year)
+            ->selectRaw('enrolls.registration_no, wholeCourses.cid, enrolls.user_id')
+            ->Where('wholeCourses.sessionYear',$yr)
             ->Where('wholeCourses.courseCode',$code)
+            ->orderBy('enrolls.registration_no','ASC')
             ->get();
 
+        error_reporting(0);
+
+        $ff=0;
+        foreach ($enrolled as $enrolls ) {
+
+//            dd($enrolls);
+//            if (count($request->examType[0][$enrolls->registration_no]) > 0) {
+//                dd($request->examType);
+//                foreach ($request->examType[0][$enrolls->registration_no] as $ff => $v) {
+
+                    $data2 = array(
+                        'registration_no' => $enrolls->registration_no,
+                        'courseId' => $enrolls->cid,
+                        'examType' => $request->examType[$ff][$enrolls->registration_no],
+                        'obtainedMarks' => $request->obtainedMarks[$ff][$enrolls->registration_no],
+                        'created_at' =>Carbon::now()
+                    );
+                    Performed::insert($data2);
+                    $ff++;
+                //}
 
 
-//            $data = $request->all();
-//            $types = $data['examType'];
-//            $marks = $data['obtainedMarks'];
-
-        //foreach ()
-        //echo $enrolled;
-        foreach ($enrolled as $enrolls){
-
-
-            $perform = new Performed();
-            $perform->registration_no = $enrolls->registration_no;
-            $perform->courseId = $enrolls->cid;
-            //$perform->examType=isset($enrolls[$])
-            $perform->examType = $request -> input('examType');
-            $perform->obtainedMarks = $request -> input('obtainedMarks');
-            $perform->save();
-
-            //$perform->save();
+            //}
         }
 
+            //$result = array();
+
+//            $check = DB::table('performance')
+//                ->insertGetId(array(
+//                    'registration_no' => $enrolls->registration_no,
+//                    'courseId' => $enrolls->cid,
+//                    'examType' => $text[$enrolls->registration_no],
+//                    'obtainedMarks' => $marks[$enrolls->registration_no],
+//                    'created_at' => Carbon::now()
+//                ));
+
+// upor er ta boss silo ..
 
 
-        return redirect()->route('courses.index')->with('success','Performance Created');
+        return redirect('/courses')->with('success','Performance Created');
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($cid)
     {
 
-        $this->dataBoss = $cid;
 
         $courses = DB :: table('wholeCourses')
             ->select('sessionYear','courseCode')
             ->Where('cid',$cid)
             ->get();
 
-        foreach ($courses as $cour){
-            $year = $cour->sessionYear;
-            $code = $cour->courseCode;
-        }
+//        foreach ($courses as $cour){
+//            $yr = $cour->sessionYear;
+//            $code = $cour->courseCode;
+//        }
 
-//        $enrolled = DB ::table('enrolls')
-//            ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
-//            ->distinct()->select('wholeCourses.courseName','wholeCourses.courseCode','wholeCourses.sessionYear','wholeCourses.teacherName','enrolls.registration_no')
-//            ->Where('sessionYear',$year)
-//            ->Where('courseCode',$code)
-//            ->get();
+        $yr = $courses[0]->sessionYear;
+        $code = $courses[0]->courseCode;
 
         $enrolled = DB ::table('enrolls')
             ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
             ->join('infos','infos.user_id','enrolls.user_id')
             ->distinct()
-            ->selectRaw('enrolls.registration_no, wholeCourses.courseName, wholeCourses.courseCode, wholeCourses.sessionYear,
+            ->selectRaw('enrolls.registration_no, enrolls.user_id, wholeCourses.courseName, wholeCourses.courseCode, wholeCourses.sessionYear,
              wholeCourses.teacherName, wholeCourses.cid,infos.batch_id,infos.contact_number,infos.photo,infos.designation')
 //            ->select('wholeCourses.courseName','wholeCourses.courseCode','wholeCourses.sessionYear','wholeCourses.teacherName','enrolls.registration_no')
-            ->Where('wholeCourses.sessionYear',$year)
+            ->Where('wholeCourses.sessionYear',$yr)
             ->Where('wholeCourses.courseCode',$code)
+            ->orderBy('enrolls.registration_no','ASC')
             ->get();
 
-        //echo $enrolled;
 
-//        ->select('wholeCourses.courseName','wholeCourses.courseCode','wholeCourses.sessionYear','wholeCourses.teacherName','enrolls.registration_no')
-        //echo $enrolle;
         return view('enrollCourse.index')->with('enrolled',$enrolled);
 
-//        $enroll = new Enrollment;
-//
-//        $course = Courses::find($cid);
-//
-//        $currentUser = auth()->user()->id;
-//        $prof = DB::table('infos')
-//            ->Where('user_id',$currentUser)
-//            ->get();
-//
-//        //$prof = Profile::all();
-//
-//        echo $enroll;
-//        $enroll->sessionYear = $course->sessionYear;
-//        $enroll->courseCode = $course->courseCode;
-//        $enroll->registration_no = $prof->registration_no;
-//
-//        $enroll->save();
-//
-//        return redirect('/courses')->with('success','Enrolled!');
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($cid)
     {
-        $enrolled = $this->dataBoss;
 
         //$courses = Courses::find($cid);
         $courses = DB::table('wholeCourses')
@@ -238,27 +155,23 @@ class EnrollController extends Controller
             ->Where('cid',$cid)
             ->get();
 
-        foreach ($courses as $cour){
-            $year = $cour->sessionYear;
-            $code = $cour->courseCode;
-        }
-
-//        $enrolled = DB ::table('enrolls')
-//            ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
-//            ->distinct()->select('wholeCourses.courseName','wholeCourses.courseCode','wholeCourses.sessionYear','wholeCourses.teacherName','enrolls.registration_no')
-//            ->Where('sessionYear',$year)
-//            ->Where('courseCode',$code)
-//            ->get();
+//        foreach ($courses as $cour){
+//            $yr = $cour->sessionYear;
+//            $code = $cour->courseCode;
+//        }
+        $yr = $courses[0]->sessionYear;
+        $code = $courses[0]->courseCode;
 
         $enrolled = DB ::table('enrolls')
             ->join('wholeCourses','wholeCourses.cid','enrolls.ciid')
             ->join('infos','infos.user_id','enrolls.user_id')
             ->distinct()
-            ->selectRaw('enrolls.registration_no, wholeCourses.courseName, wholeCourses.courseCode, wholeCourses.sessionYear,
-             wholeCourses.teacherName, wholeCourses.cid,infos.batch_id,infos.contact_number,infos.photo,infos.designation')
+            ->selectRaw('enrolls.registration_no, enrolls.user_id, wholeCourses.courseName, wholeCourses.courseCode, wholeCourses.sessionYear,
+             wholeCourses.teacherName, wholeCourses.cid,infos.batch_id')
 //            ->select('wholeCourses.courseName','wholeCourses.courseCode','wholeCourses.sessionYear','wholeCourses.teacherName','enrolls.registration_no')
-            ->Where('wholeCourses.sessionYear',$year)
+            ->Where('wholeCourses.sessionYear',$yr)
             ->Where('wholeCourses.courseCode',$code)
+            ->orderBy('enrolls.registration_no','ASC')
             ->get();
 
         //echo $enrolled;
@@ -266,32 +179,18 @@ class EnrollController extends Controller
         if(auth()->user()->id == 3 OR ($teach == auth()->user()->name AND $designate == "Teacher"))
             return view('enrollCourse.perform')->with('enrolled',$enrolled);
         else
-            return redirect('/enrollCourse')-> with('error','Unauthorized Page');
+            return redirect('/courses')-> with('error','Unauthorized Page');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
-    //public function atte
     public function update(Request $request, $cid)
     {
-        $this->validate($request,[
-            'examType' => 'required',
-            'obtainedMarks' =>'required'
-        ]);
+//        $this->validate($request,[
+//            'examType' => 'required',
+//            'obtainedMarks' =>'required'
+//        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

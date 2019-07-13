@@ -4,6 +4,8 @@
 Route::get('/', 'virtualController@index');
 
 Route::get('/front2', 'virtualController@front2');
+Route::get('/first', 'virtualController@first');
+
 
 Route::get('/liveSearch', ['as' => 'liveSearch','uses'=>'ScheduleController@index']);
 
@@ -14,6 +16,8 @@ Route::get('/schedules', ['as' => 'schedules','uses'=>'CoursesController@schedul
 Route::post('/enrollments/POST/{cid}', ['as' => 'enrollments','uses'=>'CoursesController@enrollment']);
 
 Route::post('/performances/POST/{cid}', ['as' => 'performances','uses'=>'EnrollController@performed']);
+
+Route::post('/attendance/POST/{cid}', ['as' => 'attendance','uses'=>'performDataController@attend']);
 
 Auth::routes();
 
@@ -29,6 +33,9 @@ Route::resource('courses','CoursesController');
 Route::resource('profile','ProfileController');
 
 Route::resource('enrollCourse','EnrollController');
+
+Route::resource('performDatabase','performDataController');
+
 
 Auth::routes();
 

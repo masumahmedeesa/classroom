@@ -12,6 +12,8 @@
 
 	<link href="css/datepicker.css" rel="stylesheet" type="text/css"/>
 
+	<link href="{{ asset('css/holyMother.css') }}" rel="stylesheet">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -37,6 +39,7 @@
 	</div>
 
 <section>
+
 {!! Html::script('js/jquery.js') !!}
 {!! Html::script('js/jquery-ui-1.10.4.min.js') !!}
 {!! Html::script('js/jquery-1.8.3.min.js') !!}

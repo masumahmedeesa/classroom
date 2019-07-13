@@ -23,6 +23,10 @@ class Profile extends Model
         return $this->hasMany('App\Enrollment');
     }
 
+    public function attends(){
+        return $this->hasMany('App\Enrollment');
+    }
+
     public function performs(){
         return $this->hasMany('App\Performed');
     }

@@ -1,37 +1,36 @@
 @extends('layouts.system')
 
 @section('system')
-
+    @include('popup.academic')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card-header">
                     @if(count($enrolled)>0)
 
-                        <h4 style="color: #00FFFF;"> {{$enrolled[0]->courseName}} </h4>
-                        <h4 style="color: #00FFFF;"> {{$enrolled[0]->courseCode}} </h4>
-
-                        <h4 style="color: #00FFFF;"> {{$enrolled[0]->sessionYear}} </h4>
+                        <h4 style="color: #00FFFF;"> {{$enrolled[0]->courseName}} | {{$enrolled[0]->courseCode}} </h4>
                         <h4 style="color: #00FFFF;"> {{$enrolled[0]->teacherName}} </h4>
-                        @if(Auth::user()->id == 3)
-                            <a href="#" class="btn btn-danger btn-sm"> Create Performance </a>
-                            <span style="padding-right: 10px;"> </span>
-                            <a href="#" class="btn btn-secondary btn-sm"> Take Attendance </a>
-                        @endif
+                        <h4 style="color: #00FFFF;"> {{$enrolled[0]->sessionYear}} </h4>
+                        <h4 style="color: red;"> Attendance | {{\Carbon\Carbon::now()}} | {{\Carbon\Carbon::now()->format('l')}}</h4>
+
                 </div>
                 <div class="card-body">
 
                     <table class="table table-striped" style="color: white;">
-
+                        <thead>
                         <tr>
                             <th>
                                 Enrolled Student
                             </th>
                             <th> Regular | Dropper </th>
-                            <th> Contact Number </th>
-                            <th> Photo </th>
+                            <th> Status | Enumerated Data </th>
+
                         </tr>
+                        </thead>
                         @foreach($enrolled as $enrolls)
+
+                            {{--                            {{dd($enrolls)}}--}}
+                            <tbody>
                             <tr>
                                 <td> {{$enrolls->registration_no}} </td>
                                 <td>
@@ -42,15 +41,34 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{$enrolls->contact_number}}
+
+                                    {{Form::open(['action'=>['performDataController@attend',$enrolls->cid],'method'=>'POST','enctype'=>'multipart/form-data']) }}
+
+                                    <input type="text" name="enumData[][{{$enrolls->registration_no}}]" list="ddlist" class="form-control-sm">
+                                    <datalist id="ddlist">
+                                        <option> yes </option>
+                                        <option> no </option>
+                                    </datalist>
+
+{{--                                    <div class="holyMother">--}}
+{{--                                        <input type="checkbox" onclick="hello()" name="checkB" id="attendBox">--}}
+{{--                                    </div>--}}
+
                                 </td>
-                                <td>
-                                    <img src="/storage/photos/{{$enrolls->photo}}" style="width: 100px; height: 96px; float: left; border-radius: 50%; margin-right: 25px;" alt="No image founded">
-                                </td>
+
                             </tr>
+
+                            </tbody>
+
                         @endforeach
+
                     </table>
+
+                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                    {{ Form::close() }}
+
                     @else
+
                         <h3> No Enrolled Students Available ! </h3>
                     @endif
                 </div>
@@ -59,6 +77,26 @@
 
     </div>
 
-
-
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+
+
+        $(document).ready(function() {
+            //set initial state.
+            $('#valueView').val(this.checked);
+
+            $('#attendBox').change(function() {
+                if(this.checked) {
+                    var returnVal = confirm("Are you sure?");
+                    $(this).prop("checked", returnVal);
+                }
+                $('#valueView').val(this.checked);
+            });
+        });
+
+    </script>
+
+
+    @endsection

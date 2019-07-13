@@ -64,7 +64,9 @@ class ScheduleController extends Controller
             else{
                 $output = '
                     <tr>
-                        <td align="center" colspan="7" style="color: Red;"> No Match FOUND !</td>
+                        <td align="center" colspan="7" style="color: Red;"> 
+                        <h1 align="center" style="color: white;"> No More Class FOR TODAY ! CHILL </h1>
+                        </td>
                     </tr>
                 ';
             }

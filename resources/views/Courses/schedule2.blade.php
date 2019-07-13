@@ -80,7 +80,7 @@
                     {{ $courses->links() }}
                 @else
                     <br> <br>
-                    <p align="center" style="color: teal;"> No Search Data Available </p>
+                    <h1 align="center" style="color: white;"> No More Class FOR TODAY ! CHILL </h1>
 
                 @endif
 

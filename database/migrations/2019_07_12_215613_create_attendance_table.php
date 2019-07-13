@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePerformanceTable extends Migration
+class CreateAttendanceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePerformanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('performance', function (Blueprint $table) {
+        Schema::create('attendance', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('registration_no',10);
             $table->foreign('registration_no')->references('registration_no')->on('infos');
-            $table->string('examType',40)->nullable();
-            $table->float('obtainedMarks')->nullable();
+            $table->string('status',5)->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePerformanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('performance');
+        Schema::dropIfExists('attendance');
     }
 }

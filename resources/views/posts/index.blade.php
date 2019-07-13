@@ -24,8 +24,6 @@
         </div>
 
     </div>
-    <!-- <h3> <a href="/posts/{{$pp->id}}"> {{$pp->title}} </a> </h3>
-                <small> Written on {{$pp->created_at}} by {{$pp->user->name}} </small> -->
 
 </div>
 <br>

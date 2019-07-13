@@ -50,8 +50,9 @@
                                 {{Auth::user()->email}}
                             </h2>
                             <h5> Shahjalal university of Science and Technology </h5> <br>
-                            <a href="/profile/create" class="btn btn-danger btn-sm " style="pointer-events: none;" disabled >Add More Info</a>
-                            <a href="/profile/{{$prof->registration_no}}/edit" class="btn btn-primary btn-sm ">Update</a>
+                            <a href="/profile/create" class="btn btn-danger btn-sm" style="pointer-events: none;" disabled >Add More Info</a>
+
+                            <a href="/profile/{{$prof->registration_no}}/edit" class="btn btn-primary btn-sm">Update</a>
 
                         </div>
 

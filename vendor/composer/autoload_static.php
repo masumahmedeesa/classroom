@@ -394,6 +394,7 @@ class ComposerStaticInit08a4ad8bb85e84314d951fe44e29f1ef
     );
 
     public static $classMap = array (
+        'App\\Attendance' => __DIR__ . '/../..' . '/app/Attendance.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Courses' => __DIR__ . '/../..' . '/app/Courses.php',
         'App\\Enrollment' => __DIR__ . '/../..' . '/app/Enrollment.php',
@@ -407,9 +408,11 @@ class ComposerStaticInit08a4ad8bb85e84314d951fe44e29f1ef
         'App\\Http\\Controllers\\CoursesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CoursesController.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\EnrollController' => __DIR__ . '/../..' . '/app/Http/Controllers/EnrollController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Controllers\\ScheduleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScheduleController.php',
+        'App\\Http\\Controllers\\performDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/performDataController.php',
         'App\\Http\\Controllers\\virtualController' => __DIR__ . '/../..' . '/app/Http/Controllers/virtualController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -419,6 +422,7 @@ class ComposerStaticInit08a4ad8bb85e84314d951fe44e29f1ef
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Performed' => __DIR__ . '/../..' . '/app/Performed.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Profile' => __DIR__ . '/../..' . '/app/Profile.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

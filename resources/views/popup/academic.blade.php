@@ -1,52 +1,69 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="color: black;"> Exam Performance </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h3 class="modal-title" style="color:#0f2e5c;"> Exam Performance </h3>
             </div>
             <div class="modal-body">
                 <form style="color: black;">
-                    <div class="col-md-6 fa-pull-left">
-                        <label for="recipient-name" class=""> Exam Type</label>
-                        <input type="text" class="form-control fa-pull-left" id="recipient-name">
+                    <div class="row">
 
-                        <label for="recipient-name" class=""> Exam Type</label>
-                        <input type="text" class="form-control fa-pull-left" id="recipient-name">
-                    </div>
-                    <div class="col-md-8">
-                        add
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class=""> Exam Type</label>
-                        <input type="text" class="form-control fa-pull-left" id="recipient-name">
+                        <div class="col-md-6">
+                            <label> Exam Type </label>
+                            <input type="text" class="form-control" name="examType1" id="examType1" placeholder="TT | Quiz | Lab">
 
-                        <label for="recipient-name" class=""> E</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        </div>
+
+                        <div class="col-md-6 ml-auto">
+                            <label> Obtained Marks</label>
+                            <input type="number" class="form-control" name="obtainedMarks1" id="obtainedMarks1" placeholder="Obtained Marks">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+
+
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="examType2" id="examType2" placeholder="TT | Quiz | Lab">
+
+                        </div>
+                        <div class="col-md-6 ml-auto">
+                            <input type="number" class="form-control" name="obtainedMarks2" id="obtainedMarks2" placeholder="Obtained Marks">
+
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="examType3" id="examType3" placeholder="TT | Quiz | Lab">
+
+                        </div>
+                        <div class="col-md-6 ml-auto">
+                            <input type="number" class="form-control" name="obtainedMarks3" id="obtainedMarks3" placeholder="Obtained Marks">
+
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="examType4" id="examType4" placeholder="TT | Quiz | Lab">
+
+                        </div>
+                        <div class="col-md-6 ml-auto">
+                            <input type="number" class="form-control" name="obtainedMarks4" id="obtainedMarks4" placeholder="Obtained Marks">
+
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="transferDataBest">Best | Close</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="transferDataBest2">Best 2 | Close</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="transferDataBest3">Best 3 | Close</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="transferDataAverage">Average | Close</button>
+                {{--                <button type="button" class="btn btn-primary bth-sm" id="transferData">Send message</button>--}}
             </div>
         </div>
     </div>

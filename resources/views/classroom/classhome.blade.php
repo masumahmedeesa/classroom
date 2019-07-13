@@ -14,7 +14,12 @@
 		<br> <br>
 		<img src="images/XOSS.jpg" width="100%" height="70%" alter="Nothing"/>
 
-		<br> <br>
+		<br> <br> <br>
+
+		<h2 style="color: red; font-family: ubuntu;"> |<a href="https://www.facebook.com/wreckagetune"> About Developer </a> | <a href="https://github.com/MasumAhmed28"> GitHub</a> </h2>
+
+
+		<br><br>
 	
 
 @endsection
