@@ -19,10 +19,7 @@
                             <h5 style="color: #6cbb23;"> {{Form::label('contact_number','Contact No')}} </h5>
                             {{Form::text('contact_number',$profiles->contact_number,['class' => 'form-control', 'placeholder' => 'Contact No'])}}
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <h5 style="color: #6cbb23;"> {{Form::label('department','Department')}}</h5>--}}
-{{--                            {{Form::text('department','',['class' => 'form-control', 'placeholder' => 'DEPARTMENT'])}}--}}
-{{--                        </div>--}}
+
                         <div class="form-group">
                             <h5 style="color: #6cbb23;"> {{Form::label('batch_id','Session')}} </h5>
                             {{Form::text('batch_id',$profiles->batch_id,['class' => 'form-control', 'placeholder' => 'Session'])}}
@@ -59,15 +56,7 @@
 
 @section('script')
     <script type="text/javascript">
-        //alert("hi");
-        // showclassinfo();
-        // $(function(){
-        //     $('#date_of_birth').datepicker({
-        //         inline: true,
-        //         showOtherMonths: true,
-        //         dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        //     });
-        // });
+
         $("#date_of_birth").datepicker({
             changeYear:true,
             changeMonth:true,
