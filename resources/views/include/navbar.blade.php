@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-inverse bg-dark shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-column flex-md-row">
   <div class="container">
     <a class="navbar-brand" href="{{ url('/home') }}">
       <h3 style="color:aquamarine;"> {{ config('app.name', 'Laravel') }} | Virtual </h3>
