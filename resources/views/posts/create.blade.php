@@ -5,6 +5,8 @@
 
 <h2> Create Post </h2> <br>
 
+ <!-- input use krle {{csrf use korte hobe}} -->
+ 
 {{ Form::open(['action' => 'PostsController@store', 'method' => 'POST','enctype'=>'multipart/form-data']) }}
 	<div class="form-group">
         {{Form::label('title','Title')}}

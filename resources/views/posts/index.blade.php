@@ -20,8 +20,10 @@
 
         </div>
         <div class="col-md-4 col-sm-4">
-            <img style="height: 80%; width: 60%;" src="/storage/cover_images/{{$pp->cover_image}}" alt="Nope"
+            <img style="height: 80%; width: 60%;" src="/storage/cover_images/{{$pp->cover_image}}" alt="Nope"/>
         </div>
+
+       <!--  src kaj na krle php artisan storage:link kore first e link kore nite hobe -->
 
     </div>
 
