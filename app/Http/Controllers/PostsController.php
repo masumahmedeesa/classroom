@@ -89,12 +89,8 @@ class PostsController extends Controller
 
         if(auth()->user()->id !== $post->user_id AND auth()->user()->id !== 3){
             return redirect('/posts')-> with('error','Unauthorized Page');
-
-
         }
-
         return view('posts.edit')->with('post',$post);
-
     }
 
 
