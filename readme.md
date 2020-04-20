@@ -1,12 +1,14 @@
 # Important Infos
 
-Admin Email : eesha@gmail.com		
-User_Id : 3
+<pre>
+Admin Email : eesha@gmail.com <br>
+User_Id : 3 <br>
 Admin Password : 01786122963
+</pre>
 
 # When website failed to run
 Solved a very big problem:
-# Permission denied on storage/logs..
+WHAT IF, Permission denied on storage/logs..
 
 - First:
 Go to public file. Delete Storage folder (which actually a folder link).
@@ -22,8 +24,8 @@ if not working then
 <pre> php artisan serve </pre>
 
 # Database
-Client : phpmyadmin
-Database name : classroom
+Client : phpmyadmin <br>
+Database name : classroom <br>
 classroom.sql is provided
 
 # If website doesn't run, you should have used this command to clear caches
